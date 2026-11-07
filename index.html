@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana Bir Çiçek ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffd6e7, #e8d5ff);
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  user-select: none;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cat {
+  font-size: 125px;
+  animation: bounce 2s infinite;
+}
+
+.flower {
+  font-size: 65px;
+  animation: wave 2s infinite;
+}
+
+h1 {
+  color: #d63384;
+  font-size: 27px;
+}
+
+.description {
+  color: #995477;
+  font-size: 17px;
+}
+
+.message {
+  position: fixed;
+  bottom: 15px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #c2185b;
+  font-size: 12px;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.falling {
+  position: fixed;
+  top: -50px;
+  pointer-events: none;
+  z-index: 5;
+  animation: fall linear forwards;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="flower">🌷</div>
+
+  <div class="cat">🐱</div>
+
+  <h1>Sana bir çiçek getirdim! 💗</h1>
+
+  <div class="description">
+    Çünkü hep gülümsemeyi hak ediyorsun. 🌸
+  </div>
+</div>
+
+<div class="message">
+  (seni seviyorum ❤️)
+</div>
+
+<script>
+const emojis = [
+  "💗", "❤️", "💕", "💖",
+  "🌸", "🌷", "🌹", "🌼", "💐"
+];
+
+document.addEventListener("click", function() {
+
+  for (let i = 0; i < 60; i++) {
+
+    setTimeout(() => {
+      const item = document.createElement("div");
+
+      item.className = "falling";
+
+      item.textContent =
+        emojis[Math.floor(Math.random() * emojis.length)];
+
+      item.style.left = Math.random() * 100 + "vw";
+
+      item.style.fontSize =
+        (18 + Math.random() * 25) + "px";
+
+      item.style.animationDuration =
+        (2.5 + Math.random() * 3) + "s";
+
+      document.body.appendChild(item);
+
+      setTimeout(() => item.remove(), 6000);
+
+    }, i * 20);
+  }
+
+});
+</script>
+
+</body>
+</html>
